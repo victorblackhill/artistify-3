@@ -1,14 +1,13 @@
-<h1>All artists</h1>
+<div class="artist details">
+    <h1 class="title">All Artists ({{artists.length}})</h1>
 
-<div class="cards">
-    {{#each artists}}
-    <div class="card artist" style="background-image: url({{this.picture}}">
-        <a href="/artist/{{this._id}}">
-            {{this.name}}
-        </a>
-        <p>
-            {{this.style.name}}
-        </p>
+    <div class="cards">
+        {{#each artists}}
+        <div class="card artist" style="background: url('{{this.picture}}');">
+            <a href="/artist/{{this._id}}">
+                {{this.name}}
+            </a>
+        </div>
+        {{/each}}
     </div>
-    {{/each}}
 </div>

@@ -1,9 +1,30 @@
-<h1>artist details</h1>
-{{name}}
-<p>
-    is a <a class="link" href="{{style.wikiURL}}" style="color: {{style.color}}" target="_blank">{{style.name}}</a>
-    {{#if isBand}}band {{else}}artist{{/if}}
-</p>
+<div class="artist details">
+    <h1>artist details</h1>
+    <h2 class="title"> {{artist.name}}
 
-{{style}}
-<img src="{{picture}}" alt="{{name}}'s picture">
+        {{#if artist.isBand}}
+        <i class="fa fa-users"></i>
+        {{else}}
+        <i class="fa fa-user"></i>
+        {{/if}}
+    </h2>
+
+    <h3 class="title">Know styles:</h3>
+    <ul>
+        {{#each artist.styles}}
+        <li>
+            <a class="link" href="{{this.wikiURL}}" style="color: {{this.color}}" target="_blank">{{this.name}}</a>
+        </li>
+        {{/each}}
+    </ul>
+
+    <hr>
+
+    <img class="picture" src="{{artist.picture}}" alt="{{artist.name}}'s picture">
+</div>
+
+<hr>
+
+<pre>
+{{artist}}
+</pre>

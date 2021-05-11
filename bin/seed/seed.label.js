@@ -67,6 +67,7 @@ const styles = [
     await LabelModel.deleteMany(); // empty the styles db collection
     const inserted = await LabelModel.insertMany(styles); // insert docs in db
     console.log(`seed labels done : ${inserted.length} documents inserted !`);
+    process.exit();
   } catch (err) {
     console.error(err);
   }

@@ -16,6 +16,10 @@
   padding: 5px 0 5px 20px;
 }
 
+.form .input[multiple] {
+  height: 80px;
+}
+
 .form .icon {
   margin-bottom: 20px;
 }

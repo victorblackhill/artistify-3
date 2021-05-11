@@ -2,7 +2,8 @@ const express = require("express");
 const router = new express.Router();
 const ArtistModel = require("./../model/Artist");
 const uploader = require("./../config/cloudinary");
-const protectAdminRoute = require("./../middlewares/protectAdminRoute")
+const protectAdminRoute = require("./../middlewares/protectAdminRoute");
+const StyleModel = require("./../model/Style");
 
 // router.use(protectAdminRoute);
 
@@ -17,13 +18,20 @@ router.get("/", async (req, res, next) => {
 
 // GET - create one artist (form)
 router.get("/create", async (req, res, next) => {
-  res.render("dashboard/artistCreate");
+  StyleModel.find()
+    .then((styles) => {
+      res.render("dashboard/artistCreate", { styles });
+    })
+    .catch(next);
 });
 
 // GET - update one artist (form)
 router.get("/update/:id", async (req, res, next) => {
   try {
-    res.render("dashboard/artistUpdate", await ArtistModel.findById(req.params.id));
+    res.render("dashboard/artistUpdate", {
+      artist: await ArtistModel.findById(req.params.id),
+      styles: await StyleModel.find(),
+    });
   } catch (err) {
     next(err);
   }
@@ -56,20 +64,17 @@ router.post("/", uploader.single("picture"), async (req, res, next) => {
 });
 
 // POST - update one artist
-router.post("/:id",
-  uploader.single("picture"),
-  async (req, res, next) => {
-    try {
-      const artistToUpdate = { ...req.body };
-      if (req.file) artistToUpdate.picture = req.file.path;
-      artistToUpdate.isBand = req.body.isBand === "on";
+router.post("/:id", uploader.single("picture"), async (req, res, next) => {
+  try {
+    const artistToUpdate = { ...req.body };
+    if (req.file) artistToUpdate.picture = req.file.path;
+    artistToUpdate.isBand = req.body.isBand === "on";
 
-      await ArtistModel.findByIdAndUpdate(req.params.id, artistToUpdate);
-      res.redirect("/dashboard/artist");
-    } catch (err) {
-      next(err);
-    }
+    await ArtistModel.findByIdAndUpdate(req.params.id, artistToUpdate);
+    res.redirect("/dashboard/artist");
+  } catch (err) {
+    next(err);
   }
-);
+});
 
 module.exports = router;

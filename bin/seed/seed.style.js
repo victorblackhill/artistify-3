@@ -10,6 +10,11 @@ const styles = [
     wikiURL: "https://en.wikipedia.org/wiki/Jazz",
   },
   {
+    name: "electro",
+    color: "fushia",
+    wikiURL: "https://en.wikipedia.org/wiki/Electro_(music)",
+  },
+  {
     name: "rock",
     color: "black",
     wikiURL: "https://en.wikipedia.org/wiki/Rock_music",
@@ -46,6 +51,7 @@ const styles = [
     await StyleModel.deleteMany(); // empty the styles db collection
     const inserted = await StyleModel.insertMany(styles); // insert docs in db
     console.log(`seed styles done : ${inserted.length} documents inserted !`);
+    process.exit();
   } catch (err) {
     console.error(err);
   }

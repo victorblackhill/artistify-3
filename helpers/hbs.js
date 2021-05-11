@@ -34,7 +34,7 @@ USAGE =>
 
 hbs.registerHelper("compare", function(lvalue, rvalue, options) {
   if (arguments.length < 3)
-    throw new Error("Handlerbars Helper 'compare' needs 2 parameters");
+    throw new Error("Handlerbars Helper 'compare' needs 3 parameters");
 
   var operator = options.hash.operator || "==";
 

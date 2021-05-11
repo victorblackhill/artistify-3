@@ -8,7 +8,8 @@
     "seed:artist": "node ./bin/seed/seed.artist.js",
     "seed:album": "node ./bin/seed/seed.album.js",
     "seed:style": "node ./bin/seed/seed.style.js",
-    "seed:label": "node ./bin/seed/seed.label.js"
+    "seed:label": "node ./bin/seed/seed.label.js",
+    "seed:all": "npm run seed:style && npm run seed:label && npm run seed:artist && npm run seed:album"
   },
   "dependencies": {
     "bcrypt": "^5.0.0",

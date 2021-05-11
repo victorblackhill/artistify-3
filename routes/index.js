@@ -55,6 +55,16 @@ router.get("/artist", async (req, res, next) => {
   }
 });
 
+router.get("/artist/:id", async (req, res, next) => {
+  try {
+    res.render("artist", {
+      artist: await ArtistModel.findById(req.params.id).populate("styles"),
+    });
+  } catch (err) {
+    next(err);
+  }
+});
+
 router.get("/album", async (req, res, next) => {
   try {
     res.render("albums", {
@@ -65,12 +75,16 @@ router.get("/album", async (req, res, next) => {
   }
 });
 
-router.get("/albums/:id", async (req, res, next) => {
+router.get("/album/:id", async (req, res, next) => {
   try {
-    res.render(
-      "album",
-      await AlbumModel.findById(req.params.id).populate("artist label")
-    );
+    res.render("album", {
+      album: await AlbumModel.findById(req.params.id)
+        .populate("label")
+        .populate({
+          path: "artist",
+          populate: { path: "styles" },
+        }),
+    });
   } catch (err) {
     next(err);
   }

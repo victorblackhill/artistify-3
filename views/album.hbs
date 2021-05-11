@@ -1,8 +1,25 @@
-<h1>{{title}}</h1>
+<h1>{{album.title}}</h1>
 <p>
-    {{artist.name}} recorded this album the {{formatDate releaseDate}}
+    {{album.artist.name}}
+    {{#if album.artist.styles.length}}
+    ({{album.artist.styles.0.name}})
+    {{/if}}
+    recorded this album the {{formatDate album.releaseDate}}
 </p>
-<img src="{{cover}}" alt="{{title}}'s cover'">
+<img src="{{album.cover}}" alt="{{album.title}}'s cover'">
 <p>
-    produced by {{label.name}}
+    produced by {{album.label.name}}
 </p>
+
+<hr>
+
+
+<pre>
+{{album}}
+</pre>
+
+<hr>
+
+<pre>
+{{album.artist.styles}}
+</pre>

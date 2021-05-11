@@ -41,9 +41,9 @@ const albums = [
       ArtistModel.findOne({ name: "bad brains" }),
     ]);
 
-    albums[0].artist = artists[0];
-    albums[1].artist = artists[1];
-    albums[2].artist = artists[2];
+    albums[0].artist = artists[2];
+    albums[1].artist = artists[0];
+    albums[2].artist = artists[1];
 
     const labels = await Promise.all([
       LabelModel.findOne({ name: "Loud Records" }),
@@ -51,12 +51,13 @@ const albums = [
       LabelModel.findOne({ name: "ROIR Records" }),
     ]);
 
-    albums[0].label = labels[0];
-    albums[1].label = labels[1];
-    albums[2].label = labels[2];
+    albums[0].label = labels[2];
+    albums[1].label = labels[0];
+    albums[2].label = labels[0];
 
     const inserted = await AlbumModel.insertMany(albums); // insert docs in db
     console.log(`seed albums done : ${inserted.length} documents inserted !`);
+    process.exit();
   } catch (err) {
     console.error(err);
   }
