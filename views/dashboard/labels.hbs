@@ -25,20 +25,20 @@
     <tbody class="body">
         {{#each labels}}
         <tr class="row">
-            <td class="cell logo" style="background-image: url({{logo}})"></td>
-            <td class="cell name">{{name}}</td>
-            <td class="cell country">{{country}}</td>
-            <td class="cell city">{{city}}</td>
-            <td class="cell band">{{street}}</td>
-            <td class="cell band">{{streetNumber}}</td>
-            <td class="cell band">{{zipcode}}</td>
+            <td class="cell logo" style="background-image: url({{this.logo}})"></td>
+            <td class="cell name">{{this.name}}</td>
+            <td class="cell country">{{this.country}}</td>
+            <td class="cell city">{{this.city}}</td>
+            <td class="cell band">{{this.street}}</td>
+            <td class="cell band">{{this.streetNumber}}</td>
+            <td class="cell band">{{this.zipcode}}</td>
             <td class="cell band">
-                <a href="/dashboard/label/update/{{_id}}">
+                <a href="/dashboard/label/update/{{this._id}}">
                     <i class="fa fa-pen"></i>
                 </a>
             </td>
             <td class="cell band">
-                <a href="/dashboard/label/delete/{{_id}}">
+                <a href="/dashboard/label/delete/{{this._id}}">
                     <i class="fa fa-trash"></i></a>
             </td>
         </tr>

@@ -19,18 +19,20 @@
     <tbody class="body">
         {{#each albums}}
         <tr class="row">
-            <td class="cell picture" style="background-image: url({{cover}})"></td>
-            <td class="cell name">{{title}}</td>
-            <td class="cell desc">{{artist.name}}</td>
-            <td class="cell desc">{{label.name}}</td>
-            <td class="cell desc">{{formatDate album.releaseDate}}</td>
+            <td class="cell picture" style="background-image: url({{this.cover}})"></td>
+            <td class="cell name">
+                <a href="/album/{{this._id}}">{{this.title}}</a>
+            </td>
+            <td class="cell desc">{{this.artist.name}}</td>
+            <td class="cell desc">{{this.label.name}}</td>
+            <td class="cell desc">{{formatDate this.releaseDate}}</td>
             <td class="cell band">
-                <a href="/dashboard/album/update/{{_id}}">
+                <a href="/dashboard/album/update/{{this._id}}">
                     <i class="fa fa-pen"></i>
                 </a>
             </td>
             <td class="cell band">
-                <a href="/dashboard/album/delete/{{_id}}">
+                <a href="/dashboard/album/delete/{{this._id}}">
                     <i class="fa fa-trash"></i></a>
             </td>
         </tr>

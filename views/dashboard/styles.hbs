@@ -40,21 +40,21 @@
         {{#each styles}}
         <tr class="row">
             <td class="cell color">
-                <div class="box" style="background: {{color}}"></div>
+                <div class="box" style="background: {{this.color}}"></div>
             </td>
-            <td class="cell name">{{name}}</td>
+            <td class="cell name">{{this.name}}</td>
             <td class="cell wiki">
-                <a href="{{wikiURL}}" target="_blank">
+                <a href="{{this.wikiURL}}" target="_blank">
                     <i class="fa fa-link"></i>
                 </a>
             </td>
             <td class="cell band">
-                <a href="/dashboard/style/update/{{_id}}">
+                <a href="/dashboard/style/update/{{this._id}}">
                     <i class="fa fa-pen"></i>
                 </a>
             </td>
             <td class="cell band">
-                <a href="/dashboard/style/delete/{{_id}}">
+                <a href="/dashboard/style/delete/{{this._id}}">
                     <i class="fa fa-trash"></i></a>
             </td>
         </tr>

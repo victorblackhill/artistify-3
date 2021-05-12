@@ -19,17 +19,19 @@
     <tbody class="body">
         {{#each artists}}
         <tr class="row">
-            <td class="cell picture" style="background-image: url({{picture}})"></td>
-            <td class="cell name">{{name}}</td>
-            <td class="cell desc">{{description}}</td>
-            <td class="cell band">{{isBand}}</td>
+            <td class="cell picture" style="background-image: url({{this.picture}})"></td>
+            <td class="cell name">
+                <a class="link" href="/artist/{{this._id}}">{{this.name}}</a>
+            </td>
+            <td class="cell desc">{{this.description}}</td>
+            <td class="cell band">{{this.isBand}}</td>
             <td class="cell band">
-                <a href="/dashboard/artist/update/{{_id}}">
+                <a href="/dashboard/artist/update/{{this._id}}">
                     <i class="fa fa-pen"></i>
                 </a>
             </td>
             <td class="cell band">
-                <a href="/dashboard/artist/delete/{{_id}}">
+                <a href="/dashboard/artist/delete/{{this._id}}">
                     <i class="fa fa-trash"></i></a>
             </td>
         </tr>
