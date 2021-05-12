@@ -1,26 +1,25 @@
-<div class="artist details">
-    <h1>artist details</h1>
-    <h2 class="title"> {{artist.name}}
-
+<div class="artist details" itemscope itemtype="https://schema.org/MusicGroup">
+    <h1 class="title">
+        <span itemprop="name">{{artist.name}}</span>
         {{#if artist.isBand}}
         <i class="fa fa-users"></i>
         {{else}}
         <i class="fa fa-user"></i>
         {{/if}}
-    </h2>
+        </h2>
 
-    <h3 class="title">Know styles:</h3>
-    <ul>
-        {{#each artist.styles}}
-        <li>
-            <a class="link" href="{{this.wikiURL}}" style="color: {{this.color}}" target="_blank">{{this.name}}</a>
-        </li>
-        {{/each}}
-    </ul>
+        <h3 class="title small">known styles</h3>
+        <ul>
+            {{#each artist.styles}}
+            <li>
+                <a class="link" href="{{this.wikiURL}}" style="color: {{this.color}}" target="_blank">{{this.name}}</a>
+            </li>
+            {{/each}}
+        </ul>
 
-    <hr>
+        <hr>
 
-    <img class="picture" src="{{artist.picture}}" alt="{{artist.name}}'s picture">
+        <img class="picture" src="{{artist.picture}}" alt="{{artist.name}}'s picture">
 </div>
 
 <hr>

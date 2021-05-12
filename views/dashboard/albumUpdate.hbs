@@ -1,13 +1,27 @@
-<form method="post" action="/dashboard/album/{{_id}}" class="form" enctype="multipart/form-data">
+<form method="post" action="/dashboard/album/{{album._id}}" class="form" enctype="multipart/form-data">
     <h1 class="title">update album</h1>
     <label for="title" class="label">title</label>
-    <input class="input" type="text" id="title" name="title" value="{{title}}">
+    <input class="input" type="text" id="title" name="title" value="{{album.title}}">
+
+    <label for="select-artist">artist</label>
+    <select id="select-artist" name="artist" class="input">
+        {{#each artists}}
+        <option value="{{this._id}}">{{this.name}}</option>
+        {{/each}}
+    </select>
+
+    <label for="select-label">label</label>
+    <select id="select-label" name="label" class="input">
+        {{#each labels}}
+        <option value="{{this._id}}">{{this.name}}</option>
+        {{/each}}
+    </select>
 
 
     <label for="releaseDate" class="label">release date</label>
-    <input class="input" type="date" id="releaseDate" name="releaseDate" value="{{formatDate releaseDate}}">
+    <input class="input" type="date" id="releaseDate" name="releaseDate" value="{{formatDate album.releaseDate}}">
 
-    <img class="preview" src="{{cover}}" alt="{{title}}'s cover image'">
+    <img class="preview" src="{{album.cover}}" alt="{{album.title}}'s cover image'">
 
     <label for="cover" class="label">
         choose a cover

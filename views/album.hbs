@@ -1,16 +1,22 @@
-<h1>{{album.title}}</h1>
-<p>
-    {{album.artist.name}}
-    {{#if album.artist.styles.length}}
-    ({{album.artist.styles.0.name}})
-    {{/if}}
-    recorded this album the {{formatDate album.releaseDate}}
-</p>
-<img src="{{album.cover}}" alt="{{album.title}}'s cover'">
-<p>
-    produced by {{album.label.name}}
-</p>
+<div itemscope itemtype="https://schema.org/MusicAlbum">
+    <h1 itemprop="name">{{album.title}}</h1>
+    <p>
 
+        <span itemprop="byArtist" itemscope itemtype="https://schema.org/MusicGroup">
+            <span itemprop="name"> {{album.artist.name}}</span>
+        </span>
+
+
+        {{#if album.artist.styles.length}}
+        <span itemprop="genre">({{album.artist.styles.0.name}})</span>
+        {{/if}}
+        recorded this album the {{formatDate album.releaseDate}}
+    </p>
+    <img src="{{album.cover}}" alt="{{album.title}}'s cover'">
+    <p>
+        produced by {{album.label.name}}
+    </p>
+</div>
 <hr>
 
 
