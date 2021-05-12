@@ -2,13 +2,22 @@ const hbs = require("hbs");
 const moment = require("moment");
 
 // CUSTOM HELPERS
-
-hbs.registerHelper("titiOrToto", function() {
-  const random = Math.random();
-  return random < .5 ? "titi" : "toto"
+hbs.registerHelper("isSelected", function (needle, haystack) {
+  return Array.isArray(haystack)
+    ? haystack.map((e) => e.name).includes(needle)
+      ? "selected"
+      : ""
+    : haystack.name === needle
+    ? "selected"
+    : "";
 });
 
-hbs.registerHelper("toLowerCase", function(str) {
+hbs.registerHelper("titiOrToto", function () {
+  const random = Math.random();
+  return random < 0.5 ? "titi" : "toto";
+});
+
+hbs.registerHelper("toLowerCase", function (str) {
   return str.toLowerCase();
 });
 
@@ -32,35 +41,36 @@ USAGE =>
 {{/compare }}
 */
 
-hbs.registerHelper("compare", function(lvalue, rvalue, options) {
+hbs.registerHelper("compare", function (lvalue, rvalue, options) {
+  console.log(lvalue, rvalue);
   if (arguments.length < 3)
     throw new Error("Handlerbars Helper 'compare' needs 3 parameters");
 
   var operator = options.hash.operator || "==";
 
   var operators = {
-    "==": function(l, r) {
+    "==": function (l, r) {
       return l == r;
     },
-    "===": function(l, r) {
+    "===": function (l, r) {
       return l === r;
     },
-    "!=": function(l, r) {
+    "!=": function (l, r) {
       return l != r;
     },
-    "<": function(l, r) {
+    "<": function (l, r) {
       return l < r;
     },
-    ">": function(l, r) {
+    ">": function (l, r) {
       return l > r;
     },
-    "<=": function(l, r) {
+    "<=": function (l, r) {
       return l <= r;
     },
-    ">=": function(l, r) {
+    ">=": function (l, r) {
       return l >= r;
     },
-    typeof: function(l, r) {
+    typeof: function (l, r) {
       return typeof l == r;
     },
   };
@@ -79,7 +89,6 @@ hbs.registerHelper("compare", function(lvalue, rvalue, options) {
   }
 });
 
-hbs.registerHelper("formatDate", function(date) {
+hbs.registerHelper("formatDate", function (date) {
   return moment(date).format("YYYY-MM-DD");
 });
-
