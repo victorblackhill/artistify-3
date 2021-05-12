@@ -15,15 +15,15 @@
     <select name="styles" id="styles" class="input" multiple>
         <option value="-1" disabled selected>please select a style</option>
         {{#each styles}}
-        <option value="{{this._id}}">{{this.name}}</option>
+            <option {{isSelected this.name ../artist.styles}} value="{{this._id}}">{{this.name}}</option>
         {{/each}}
     </select>
-
 
     <label for="picture" class="label">
         choose a picture
         <i class="icon fas fa-cloud-upload-alt fa-1x"></i>
     </label>
+
     <input class="is-hidden" type="file" id="picture" name="picture">
 
     <img class="preview" src="{{artist.picture}}" alt="{{artist.name}}'s picture'">

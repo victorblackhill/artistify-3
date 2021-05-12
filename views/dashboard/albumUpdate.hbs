@@ -3,17 +3,20 @@
     <label for="title" class="label">title</label>
     <input class="input" type="text" id="title" name="title" value="{{album.title}}">
 
+    <label for="">currrent artist</label>
+    <input type="text" disabled value="{{album.artist.name}}" class="input">
+
     <label for="select-artist">artist</label>
     <select id="select-artist" name="artist" class="input">
         {{#each artists}}
-        <option value="{{this._id}}">{{this.name}}</option>
+        <option {{isSelected this.name ../album.artist}} value="{{this._id}}">{{this.name}}</option>
         {{/each}}
     </select>
 
     <label for="select-label">label</label>
     <select id="select-label" name="label" class="input">
         {{#each labels}}
-        <option value="{{this._id}}">{{this.name}}</option>
+        <option {{isSelected this.name ../album.label}} value="{{this._id}}">{{this.name}}</option>
         {{/each}}
     </select>
 
