@@ -1,42 +1,9 @@
-@import url("https://overpass-30e2.kxcdn.com/overpass-mono.css");
-@import url("./mod.cards.css");
-@import url("./mod.message.css");
-
-* {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-}
-
-body {
-  font-family: Avenir;
-  max-width: 1280px;
-  margin: auto;
-  box-shadow: 0px 1.2px 1.9px #000;
-  min-height: calc(100vh - 2px);
-}
-
-a {
-  color: inherit;
-  text-decoration: none;
-}
-
-p {
-  margin: 10px 0;
-  padding: 10px 0;
-}
-
 img.preview {
   max-width: 300px;
 }
 
 img.thumbnail {
   max-width: 48px;
-}
-
-hr {
-  margin-top: 10px;
-  margin-bottom: 10px;
 }
 
 .is-hidden {
@@ -78,26 +45,6 @@ hr {
   font-family: overpass-mono;
 }
 
-#header-main {
-  padding: 5px 20px;
-  background: #101;
-  position: sticky;
-  top: 0;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  z-index: 1;
-}
-
-
-#header-main .link {
-  color: whitesmoke;
-}
-
-#header-main .link:hover {
-  color: dodgerblue;
-}
-
 #search-bar {
   display: flex;
   flex-direction: row;
@@ -117,10 +64,6 @@ hr {
   flex: 0 0 32px;
   height: inherit;
   outline: none;
-}
-
-#content-main {
-  padding: 5px 20px;
 }
 
 .link.album {
@@ -169,31 +112,6 @@ hr {
   margin: auto;
 }
 
-.cards {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-  grid-auto-rows: minmax(280px, auto);
-  gap: 20px;
-}
-
-.cards .card {
-  display: flex;
-  justify-content: center;
-  flex-direction: column;
-  align-items: center;
-  border: 1px solid;
-  border-radius: 0.3rem;
-  box-shadow: 0.1px 0.8px 3px;
-  background-size: cover !important;
-  background-position: center !important;
-  background-repeat: no-repeat !important;
-  filter: grayscale(1);
-  color: white;
-  font-size: 2rem;
-  font-weight: bolder;
-  background: linear-gradient(rgba(0, 0, 0, 0.8), rgba(0, 0, 0, 0.2));
-}
-
-.cards .card a {
-  text-shadow: 0.3px 0.8px 2px black;
+.artist.details .picture {
+  max-width: 220px;
 }

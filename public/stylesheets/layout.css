@@ -1,0 +1,23 @@
+#header-main {
+  padding: 5px 20px;
+  background: #101;
+  position: sticky;
+  top: 0;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  z-index: 1;
+}
+
+#header-main .link {
+  color: whitesmoke;
+}
+
+#header-main .link:hover {
+  color: dodgerblue;
+}
+
+#content-main {
+    padding: 5px 20px;
+  }
+  
