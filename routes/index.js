@@ -31,14 +31,16 @@ router.get("/dashboard", async (req, res, next) => {
   try {
     const dbRes = await Promise.all([
       ArtistModel.find(),
+      AlbumModel.find(),
       LabelModel.find(),
       StyleModel.find(),
     ]);
 
     res.render("dashboard/index", {
       artistsCount: dbRes[0].length,
-      labelsCount: dbRes[1].length,
-      stylesCount: dbRes[2].length,
+      albumsCount: dbRes[1].length,
+      labelsCount: dbRes[2].length,
+      stylesCount: dbRes[3].length,
     });
   } catch (dbErr) {
     next(err);

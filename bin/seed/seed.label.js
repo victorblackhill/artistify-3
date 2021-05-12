@@ -3,7 +3,7 @@ require("dotenv").config();
 require("./../../config/mongo"); // fetch the db connection
 const LabelModel = require("./../../model/Label"); // fetch the model to validate our user document before insertion (in database)
 
-const styles = [
+const labels = [
   {
     name: "Ninja Tunes",
     street: "fake street",
@@ -65,7 +65,7 @@ const styles = [
 (async function insertLabels() {
   try {
     await LabelModel.deleteMany(); // empty the styles db collection
-    const inserted = await LabelModel.insertMany(styles); // insert docs in db
+    const inserted = await LabelModel.insertMany(labels); // insert docs in db
     console.log(`seed labels done : ${inserted.length} documents inserted !`);
     process.exit();
   } catch (err) {
