@@ -39,6 +39,10 @@ img.thumbnail {
   font-family: overpass-mono;
 }
 
+.title.small {
+  font-size: 1.05rem;
+}
+
 #logo-main a {
   font-size: 1.4rem;
   color: white;
