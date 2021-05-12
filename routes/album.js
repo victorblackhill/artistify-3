@@ -31,7 +31,7 @@ router.get("/update/:id", async (req, res, next) => {
   try {
     const artists = await ArtistModel.find();
     const labels = await LabelModel.find();
-    const album = await AlbumModel.findById(req.params.id);
+    const album = await AlbumModel.findById(req.params.id).populate("label artist");
     res.render("dashboard/albumUpdate", { album, artists, labels });
   } catch (err) {
     next(err);

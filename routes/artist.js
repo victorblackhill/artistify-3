@@ -29,7 +29,7 @@ router.get("/create", async (req, res, next) => {
 router.get("/update/:id", async (req, res, next) => {
   try {
     res.render("dashboard/artistUpdate", {
-      artist: await ArtistModel.findById(req.params.id),
+      artist: await ArtistModel.findById(req.params.id).populate("styles"),
       styles: await StyleModel.find(),
     });
   } catch (err) {
