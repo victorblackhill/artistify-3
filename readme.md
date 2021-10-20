@@ -105,5 +105,8 @@ Done already ? Congratz !
 ### Wanna do more ? Here are some bonuses !
 
 - On the home page, display the last 3 inserted albums and artists, sorted by date in descending order.
+- display all related album, if any, in each artist detail page
 - Create a new router file in routes/my-api.js
-  - Expose all artists, albums, labels, styles as a JSON response.
+  - Expose all artists, albums, labels, styles as JSON responses, in separate routes.
+- carte blanche: use chart.js or d3.js to create a nice data visualisation in the dashboard index
+
