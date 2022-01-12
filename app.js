@@ -11,6 +11,8 @@ const flash = require("connect-flash"); // designed to keep messages between 2 h
 const hbs = require("hbs");
 // https://www.npmjs.com/package/express-session
 const session = require("express-session");
+const protectAdminRoute = require("./middlewares/protectAdminRoute");
+
 
 const app = express();
 
@@ -57,7 +59,7 @@ const styleRouter = require("./routes/style");
 
 //AuthRoutes -------------
 const authRouter = require("./routes/auth");
-
+app.use("/dashboard/",protectAdminRoute)
 
 // use routers
 app.use("/", indexRouter); // use routers
