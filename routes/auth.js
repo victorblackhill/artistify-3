@@ -52,19 +52,37 @@ const createUser = async function (req, res, next){
     }
 }
 
-const logIn = async function(req,res,next){
+const signIn = async function(req,res,next){
     try{
         const {email, password}= req.body
-        
         const foundUser = await UserModel.findOne({email:email})
 
         if(!foundUser){
+            req.flash("error", "Invalid credentials")
+            res.redirect("/auth/signin")
+        }else{
+            const isSamePassword = bcrypt.compareSync(password,foundUser.password)
+            console.log("is the same password ? ",isSamePassword)
+
+            if(!isSamePassword){
+                req.flash("error", "Invalid credentials")
+                res.redirect("/auth/signin")
+            }else{
+
+                const userObject = foundUser.toObject();
+                req.session.currentUser = userObject
+                
+                req.flash("success","Successefully logged in")
+                res.redirect("/")
+
+            }
 
 
-            
+
+            //console.log(">>> object",userObject, ">>>> Mongo", foundUser)
         }
-        console.log(foundUser)
-        renderReq(req,res,next)
+        
+        //renderReq(req,res,next)
 
     }catch(err){
         next(err)
@@ -72,8 +90,15 @@ const logIn = async function(req,res,next){
 
 }
 
-//all routes are under /auth/myRoute
 
+const signOut = function(req,res,next){
+    
+    req.session.destroy((err) => {
+        
+        res.redirect("/auth/signin")
+    })
+}
+//all routes are under /auth/ ...
 
 
 //signup
@@ -82,9 +107,10 @@ router.post("/signup", fileUploader.single("avatar") ,createUser)
 
 //signin
 router.get("/signin",renderSignin)
-
+router.post("/signin",signIn)
 
 //signout
+router.get("/signout",signOut)
 
 
 module.exports = router
