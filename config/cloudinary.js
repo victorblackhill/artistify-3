@@ -12,7 +12,10 @@ const res =cloudinary.config({
 
 // cloudinary : SAAS platform : specialized in images hosting (tools : metadata, image analyzing ...)
 const storage = new CloudinaryStorage({
-  cloudinary: cloudinary
+  cloudinary: cloudinary,
+  params:{
+    folder:"artistify-3"
+  }
 });
 
 
